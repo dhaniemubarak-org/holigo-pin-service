@@ -12,8 +12,7 @@ import java.nio.ByteBuffer;
 
 public class Decryption {
 
-    public String decrypt(String encryptedText) throws Exception {
-        String password = "Testing";
+    public String decrypt(String encryptedText, String password) throws Exception {
         Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
         ByteBuffer buffer = ByteBuffer.wrap(new Base64().decode(encryptedText));
         byte[] saltBytes = new byte[20];

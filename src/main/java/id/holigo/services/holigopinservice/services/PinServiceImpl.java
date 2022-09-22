@@ -48,7 +48,7 @@ public class PinServiceImpl implements PinService {
         if (user.getPin() != null) {
             throw new ForbiddenException("PIN has been set!");
         }
-        user.setPin(createNewPinDto.getPin());
+        user.setPin(createNewPinDto.getPin(), true);
         try {
             userRepository.save(user);
         } catch (Exception e) {
@@ -69,7 +69,7 @@ public class PinServiceImpl implements PinService {
         if (!isValid) {
             throw new ForbiddenException("Current PIN not valid");
         }
-        user.setPin(changePinDto.getPin());
+        user.setPin(changePinDto.getPin(), true);
         try {
             userRepository.save(user);
         } catch (Exception e) {
@@ -90,7 +90,7 @@ public class PinServiceImpl implements PinService {
 
         boolean isOtpValid = otpDto.getStatus() == OtpStatusEnum.CONFIRMED;
         if (isOtpValid) {
-            user.setPin(resetPinDto.getPin());
+            user.setPin(resetPinDto.getPin(), true);
             try {
                 userRepository.save(user);
             } catch (Exception e) {

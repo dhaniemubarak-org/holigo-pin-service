@@ -80,9 +80,14 @@ public class User {
         return this.getEnabled();
     }
 
-    public void setPin(String value) {
+    public void setPin(String value, boolean encrypt) {
         if (value != null) {
-            this.pin = new BCryptPasswordEncoder().encode(value);
+            if (encrypt) {
+                this.pin = new BCryptPasswordEncoder().encode(value);
+            } else {
+                this.pin = value;
+            }
+
         } else {
             this.pin = null;
         }

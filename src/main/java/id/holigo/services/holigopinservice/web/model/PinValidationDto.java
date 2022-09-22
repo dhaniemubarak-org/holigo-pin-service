@@ -13,4 +13,5 @@ import java.io.Serializable;
 @AllArgsConstructor
 public class PinValidationDto implements Serializable {
     private String pin;
+    private Integer attemptGranted;
 }

@@ -14,10 +14,8 @@ import java.security.SecureRandom;
 
 public class Encryption {
 
-    public String encrypt(String data) throws Exception {
+    public String encrypt(String data, String password) throws Exception {
         byte[] ivBytes;
-        String password = "Testing";
-
         SecureRandom random = new SecureRandom();
         byte[] bytes = new byte[20];
         random.nextBytes(bytes);
